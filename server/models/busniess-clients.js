@@ -3,12 +3,14 @@ const Schema = mongoose.Schema
 
 const BusniessClient = new Schema(
     {
-        ownerDetails: { type: String, required: true },
+        ownerDetails: { type: String, required: false },
         busniessName: { type: String, required: true },
-        category: { type: String, required: true }
+        category: { type: String, required: true },
+        websiteLink: { type: String, required: true },
+        coupon: { type: String, required: false }
     },
     {
-        timestamps: true
+        timestamps: true,
     }
 )
 module.exports = mongoose.model("busniessClients", BusniessClient)

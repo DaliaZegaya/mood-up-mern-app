@@ -1,7 +1,10 @@
 const router = require("express").Router()
 const {
     getAllUsers,
-    createNewUser
+    getUserById,
+    createNewUser,
+    updateUser,
+    deleteUser
 } = require("../controllers/users")
 const {
     signUp,
@@ -9,9 +12,12 @@ const {
 } = require("../middleware/accsess")
 
 router.get("/",getAllUsers)
-router.post("/createNewUser",createNewUser)
-router.post('/signUp', signUp)
-router.post('/signIn', signIn)
+router.get("/getById/:id",getUserById)
+router.post("/create",createNewUser)
+router.post("/signUp",signUp)
+router.post("/signIn",signIn)
+router.put("/update/:id",updateUser)
+router.delete("/delete/:id",deleteUser)
 
 
 module.exports = router

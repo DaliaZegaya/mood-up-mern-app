@@ -16,14 +16,22 @@ app.use(express.urlencoded({extended: true}))
 app.use(cors())
 
 const usersRouter = require("./routes/users")
-const feelingsRouter = require("./routes/feelings")
-
+const moodsRouter = require("./routes/moods")
+const questionsRouter = require("./routes/questions")
+const quotesRouter = require("./routes/quotes")
+const busniessClientsRouter = require("./routes/busniess-clients")
+const couponsRouter = require("./routes/coupons")
 
 app.get("/", (req, res) => {
     res.send({message: "succses"})
 })
-app.use("/api/feelings",feelingsRouter)
+
+app.use("/api/feelings",moodsRouter)
 app.use("/api/users",usersRouter)
+app.use("/api/questions",questionsRouter)
+app.use("/api/quotes",quotesRouter)
+app.use("/api/busniessClients",busniessClientsRouter)
+app.use("/api/coupons",couponsRouter)
 
 
 app.listen(port, ()=>{

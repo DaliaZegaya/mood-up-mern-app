@@ -13,14 +13,26 @@ const getById = async (req,res,model) => {
     })
     .catch(err=>res.status(400).json({success:true,err}))
 }
-const create = async (req,res,model,field) => {
-    await model.insertMany(req.body.products)
-    .then(()=>res.status(200).json({success:true, message:"products added successfully"}))
+const create = async (req,res,model) => {
+    await model.insertMany(req.body.data)
+    .then(()=>res.status(200).json({success:true, message:"data added successfully"}))
     .catch(err=>{res.status(400).json({success:false,err})})
+}
+const updateOne = async (req,res,model) => {
+    await model.findByIdAndUpdate(req.params.id, req.body.data)
+    .then(result=>res.status(200).json({success:true,result}))
+    .catch(err=>res.status(400).json({success:false,err}))
+}
+const deleteOne = async (req,res,model) => {
+    await model.findByIdAndDelete(req.params.id)
+    .then(()=>{res.status(200).json({success:true})})
+    .catch(err=>res.status(400).json({success:false,err}))
 }
 
 module.exports = {
     getAll,
     getById,
-    create
+    create,
+    updateOne,
+    deleteOne
 }

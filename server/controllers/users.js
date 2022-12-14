@@ -1,21 +1,34 @@
 const usersModel = require("../models/users")
 const {
-    getAll
+    getAll,
+    getById,
+    create,
+    updateOne,
+    deleteOne
 } = require("./main")
 
-const getAllUsers = (req, res) => {
+const getAllUsers = (req,res) => {
     getAll(req,res,usersModel)
 }
-const createNewUser = async (req,res) => {
-    await usersModel.insertMany(req.body.user)
-    .then(()=>{
-        res.status(200).json({success:true, message:"user added successfully"})
-    })
-    .catch(err=>{res.status(400).json({success:false,err})})
+const getUserById = (req,res) => {
+    getById(req,res,usersModel)
 }
+const createNewUser = (req,res) => {
+    create(req,res,usersModel)
+}
+const updateUser = (req,res) => {
+    updateOne(req,res,usersModel)
+}
+const deleteUser = (req,res) => {
+    deleteOne(req,res,usersModel)
+}
+
 
 
 module.exports = {
     getAllUsers,
-    createNewUser
+    getUserById,
+    createNewUser,
+    updateUser,
+    deleteUser
 }

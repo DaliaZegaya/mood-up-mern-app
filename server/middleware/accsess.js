@@ -50,7 +50,7 @@ const signIn = async (req, res) => {
           };
           jwt.sign(payload, process.env.SECRET_KEY, { expiresIn: 31556926 }, (err, token) => {
             if (err) return res.status(400).json({ err, message: false });
-            res.json({ success: true, token: `Bearer ${token}` });
+            res.json({ success: true, token: `Bearer token: ${token}` });
           });
         } else {
           return res
