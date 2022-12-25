@@ -7,7 +7,7 @@ const BusniessClient = new Schema(
         busniessName: { type: String, required: true },
         category: { type: String, required: true },
         websiteLink: { type: String, required: true },
-        coupon: { type: String, required: false }
+        coupon: { type: mongoose.Types.ObjectId, ref: "coupons" }
     },
     {
         timestamps: true,

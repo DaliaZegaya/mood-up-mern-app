@@ -8,7 +8,7 @@ const {
 } = require("./main")
 
 const getAllBusniessClients = async (req, res) => {
-    getAll(req,res,busniessClientsModel)
+    getAll(req,res,busniessClientsModel,"coupon")
 }
 const getBusniessClientById = (req,res) => {
     getById(req,res,busniessClientsModel)

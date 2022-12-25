@@ -1,8 +1,9 @@
 const getAll = async (req,res,model) => {
     await model.find({})
-    .then(items=>{
-        items.length == 0 ? res.status(300).json({success:false, message:"no items found"}) :
-        res.status(200).json({success:true,items})
+    // .populate({"path":ref})
+    .then(data=>{
+        data.length == 0 ? res.status(300).json({success:false, message:"no data found"}) :
+        res.status(200).json({success:true,data})
     })
     .catch(err=>res.status(400).json({success:false,err}))
 }

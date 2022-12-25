@@ -3,11 +3,8 @@ const Schema = mongoose.Schema
 
 const Question = new Schema(
     {
-        firstQuestion: { type:String, require:true },
-        secondQuestion: { type:String, require:true },
-        thirdQuestion: { type:String, require:true },
-        fourthQuestion: { type:String, require:true },
-        fifthQuestion: { type:String, require:true }
+        questionNumber: { type:Number, required:true },
+        question: { type:String, required:true }
     },
     {
         timestamps: true

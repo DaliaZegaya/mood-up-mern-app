@@ -8,7 +8,7 @@ const {
 } = require("./main")
 
 const getAllMoods = async (req, res) => {
-    getAll(req,res,moodsModel)
+    getAll(req,res,moodsModel,"quotes")
 }
 const getMoodById = (req,res) => {
     getById(req,res,moodsModel)

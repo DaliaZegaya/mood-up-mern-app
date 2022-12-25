@@ -11,7 +11,7 @@ const {
 
 
 const getAllUsers = (req, res) => {
-    getAll(req, res, usersModel)
+    getAll(req, res, usersModel,"moods")
 }
 const getUserById = (req, res) => {
     getById(req, res, usersModel)

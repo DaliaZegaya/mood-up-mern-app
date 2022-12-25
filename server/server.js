@@ -25,11 +25,12 @@ const quotesRouter = require("./routes/quotes")
 const busniessClientsRouter = require("./routes/busniess-clients")
 const couponsRouter = require("./routes/coupons")
 
+
 app.get("/", (req, res) => {
     res.send({ message: "succses" })
 })
 
-app.use("/api/feelings", moodsRouter)
+app.use("/api/moods", moodsRouter)
 app.use("/api/users", validateUserSchema, usersRouter)
 app.use("/api/questions", questionsRouter)
 app.use("/api/quotes", quotesRouter)

@@ -17,7 +17,6 @@ const User = new Schema(
         position: { type: String, required: false },
         hobbies: [{ type: String }],
         moods: [{ type: mongoose.Schema.Types.ObjectId, ref: "moods", required: false }],
-
     },
     {
         timestamps: true,
@@ -31,7 +30,7 @@ const validate = (data) => {
         email: Joi.string().email().required(),
         password: passwordComplexity().required(),
         dateOfBirth: Joi.date(),
-        phoneNumber: Joi.min(10).max(10)
+        phoneNumber: Joi.string().min(10).max(10)
     })
     return schema.validate(data)
 }
