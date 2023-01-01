@@ -1,23 +1,23 @@
-const usersModel = require("../models/users");
+const { usersModel } = require("../models/users");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { validateSignUp,validateSignIn } = require("../validation/user-accsess");
 
 const signUp = async (req, res) => {
-    const { isValid, errors } = validateSignUp(req.body.user);
+    const { isValid, errors } = validateSignUp(req.body.data);
     if (!isValid) return res.status(400).json(errors);
-    usersModel.findOne({ email: req.body.user.email }, (err, user) => {
+    usersModel.findOne({ email: req.body.data.email }, (err, user) => {
       if (err) return res.status(400).json(err);
       if (user) return res.json({ massage: "email already taken" });
       bcrypt
         .genSalt()
         .then((salt) => {
           bcrypt
-            .hash(req.body.user.password, salt)
+            .hash(req.body.data.password, salt)
             .then(async (hashPassword) => {
-              req.body.user.password = hashPassword;
+              req.body.data.password = hashPassword;
               await usersModel
-                .insertMany(req.body.user)
+                .insertMany(req.body.data)
                 .then(() => res.json({ massage: "success" }))
                 .catch((err) => res.json(err));
             })
@@ -33,10 +33,11 @@ const signUp = async (req, res) => {
 
   
 const signIn = async (req, res) => {
-    const { isValid, errors } = validateSignIn(req.body.user);
+  console.log("asfasfa");
+    const { isValid, errors } = validateSignIn(req.body.data);
     if (!isValid) return res.status(400).json(errors);
-    const email = req.body.user.email;
-    const password = req.body.user.password;
+    const email = req.body.data.email;
+    const password = req.body.data.password;
     await usersModel.findOne({ email }).then((user) => {
       if (!user) {
         return res.status(404).json({ emailNotFound: "Email not found" });
@@ -48,9 +49,9 @@ const signIn = async (req, res) => {
             name: user.name,
             email: user.email,
           };
-          jwt.sign(payload, process.env.SECRET_KEY, { expiresIn: 31556926 }, (err, token) => {
+          jwt.sign(payload, process.env.SECRET_KEY, { expiresIn: "3h" }, (err, token) => {
             if (err) return res.status(400).json({ err, message: false });
-            res.json({ success: true, token: `Bearer token: ${token}` });
+            res.json({ success: true, token: token});
           });
         } else {
           return res

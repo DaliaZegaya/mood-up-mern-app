@@ -7,6 +7,7 @@ const path = require("path")
 require("./DB/db")
 const passport = require('passport')
 require('./config/passport')(passport)
+const authMiddleWare = require("./middleware/auth")
 
 const app = express()
 const port = process.env.PORT || 8000
@@ -31,11 +32,11 @@ app.get("/", (req, res) => {
 })
 
 app.use("/api/moods", moodsRouter)
-app.use("/api/users", validateUserSchema, usersRouter)
-app.use("/api/questions", questionsRouter)
-app.use("/api/quotes", quotesRouter)
-app.use("/api/busniessClients", busniessClientsRouter)
-app.use("/api/coupons", couponsRouter)
+app.use("/api/users", usersRouter)
+app.use("/api/questions", authMiddleWare, questionsRouter)
+app.use("/api/quotes", authMiddleWare, quotesRouter)
+app.use("/api/busniessClients", authMiddleWare, busniessClientsRouter)
+app.use("/api/coupons", authMiddleWare, couponsRouter)
 
 
 app.listen(port, () => {

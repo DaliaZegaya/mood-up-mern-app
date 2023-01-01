@@ -11,8 +11,8 @@ const User = new Schema(
         nickName: { type: String, required: false },
         email: { type: String, required: true, lowercase: true },
         password: { type: String, required: true },
-        dateOfBirth: { type: Date, required: true },
-        phoneNumber: { type: String, required: true },
+        dateOfBirth: { type: Date, required: false },
+        phoneNumber: { type: String, required: false },
         adress: { type: String, required: false },
         position: { type: String, required: false },
         hobbies: [{ type: String }],
@@ -26,7 +26,9 @@ const User = new Schema(
 
 const validate = (data) => {
     const schema = Joi.object({
-        firstName: Joi.string().required(),
+        firstName: Joi.string(),
+        lastName: Joi.string(),
+        confirmPassword: Joi.string(),
         email: Joi.string().email().required(),
         password: passwordComplexity().required(),
         dateOfBirth: Joi.date(),
@@ -38,5 +40,5 @@ const usersModel = mongoose.model("users", User)
 
 module.exports = {
     usersModel, 
-    validate
+    validate 
 }
