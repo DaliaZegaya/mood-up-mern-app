@@ -1,8 +1,8 @@
 <h1> 😄 IT'S TIME TO MOOD UP 😄 </h1>
-<h4>A mood tracking application, the application learns the user according to the information the user enters and accordingly knows how to offer him programs to raise his mood.</h4>
-<h4>In the application you can find a daily quote, places to travel and in the future also a music playlist.</h4>
+<h4>A mood tracking application, which studies the user according to the information they enter and accordingly presents them with relevant options to improve their mood.</h4>
+<h4>In the application you can find a daily inspirational quote, places to travel to and in the future will include a music playlist.</h4>
 
-<h4>The project was very interesting and challenging, React Native is a technology that I learned on my own and I'm glad that I took on the challenge 💪🏽<h4>
+<h4>The project was very interesting and challenging. React Native is a technology that I learned independantly and I'm glad that I took on the challenge 💪🏽<h4>
 <h4>I hope you enjoy it, if you have any questions feel free to send me a message on LinkedIn 🤗<h4>
 
 <h4>The technologies I worked with are:</h4>
