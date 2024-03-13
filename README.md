@@ -1,4 +1,3 @@
-<h1> IT'S TIME TO MOOD UP </h1>
 <p>
 
 # MoodUp - Mood Tracking App
